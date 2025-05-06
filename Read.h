@@ -13,7 +13,11 @@ private:
     std::unordered_set<int> terminals;  // Nodos terminales
     std::string filename;               // Nombre del archivo
     
-    // Métodos 
+    // Métodos
+    int totalNodes = 0;
+    int totalEdges = 0;
+    int totalTerminals = 0;
+
     void processGraphSection(std::ifstream& file);
     void processTerminalsSection(std::ifstream& file);
     
@@ -33,6 +37,11 @@ public:
     
     // Método para verificar si un nodo es terminal
     bool isTerminal(int node) const;
+
+    int getTotalNodes() const;
+    int getTotalEdges() const;
+    int getTotalTerminals() const;
+    
 };
 
 #endif
