@@ -1,0 +1,52 @@
+\doxysection{Read.\+h}
+\hypertarget{Read_8h_source}{}\label{Read_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ READ}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ READ}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRead}{Read}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ std::unordered\_map<int,\ std::vector<std::pair<int,\ int>>>\ adjacencyList;\ \textcolor{comment}{//\ Lista\ de\ adyacencia}}
+\DoxyCodeLine{00013\ \ \ \ \ std::unordered\_set<int>\ terminals;\ \ \textcolor{comment}{//\ Nodos\ terminales}}
+\DoxyCodeLine{00014\ \ \ \ \ std::string\ filename;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nombre\ del\ archivo}}
+\DoxyCodeLine{00015\ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Métodos}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNodes\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ totalEdges\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ totalTerminals\ =\ 0;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ processGraphSection(std::ifstream\&\ file);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ processTerminalsSection(std::ifstream\&\ file);}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classRead}{Read}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Método\ principal\ para\ leer\ el\ archivo}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRead_a85e3cdcebbf1967fd53c2cb8ca3007f5}{readFile}}();}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<int,\ std::vector<std::pair<int,\ int>>>\&\ getAdjacencyList()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_set<int>\&\ getTerminals()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Método\ para\ imprimir\ información\ }}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ printGraphInfo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Método\ para\ verificar\ si\ un\ nodo\ es\ terminal}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ isTerminal(\textcolor{keywordtype}{int}\ node)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ getTotalNodes()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ getTotalEdges()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ getTotalTerminals()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

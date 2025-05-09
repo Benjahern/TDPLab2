@@ -15,33 +15,27 @@ void testGraphReader() {
     
     // 2. Prueba de contadores
     std::cout << "\n[Prueba de contadores]" << std::endl;
-    std::cout << "• Nodos declarados: " << reader.getTotalNodes() << std::endl;
-    std::cout << "• Nodos encontrados: " << reader.getAdjacencyList().size() << std::endl;
-    std::cout << "• Aristas declaradas: " << reader.getTotalEdges() << std::endl;
-    std::cout << "• Terminales declarados: " << reader.getTotalTerminals() << std::endl;
-    std::cout << "• Terminales encontrados: " << reader.getTerminals().size() << std::endl;
+    std::cout << "• Nodos declarados: " << reader.getGraph().getTotalNodes() << std::endl;
+    std::cout << "• Nodos encontrados: " << reader.getGraph().getAdjacencyList().size() << std::endl;
+    std::cout << "• Aristas declaradas: " << reader.getGraph().getTotalEdges() << std::endl;
+    std::cout << "• Terminales declarados: " << reader.getGraph().getTotalTerminals() << std::endl;
+    std::cout << "• Terminales encontrados: " << reader.getGraph().getTerminals().size() << std::endl;
     
-    assert(reader.getTotalNodes() > 0 && "Error: No se leyó la cantidad de nodos");
-    assert(reader.getTotalEdges() > 0 && "Error: No se leyó la cantidad de aristas");
-    assert(reader.getTotalTerminals() > 0 && "Error: No se leyó la cantidad de terminales");
+    assert(reader.getGraph().getTotalNodes() > 0 && "Error: No se leyó la cantidad de nodos");
+    assert(reader.getGraph().getTotalEdges() > 0 && "Error: No se leyó la cantidad de aristas");
+    assert(reader.getGraph().getTotalTerminals() > 0 && "Error: No se leyó la cantidad de terminales");
     std::cout << "✓ Contadores básicos válidos" << std::endl;
     
     // 3. Prueba de consistencia de datos
     std::cout << "\n[Prueba de consistencia]" << std::endl;
-    std::cout << reader.getTerminals().size() << std::endl;
-    std::cout << reader.getTotalTerminals() << std::endl;
-    
-
-
-
-    assert(reader.getTerminals().size() == reader.getTotalTerminals() && 
+    assert(reader.getGraph().getTerminals().size() == reader.getGraph().getTotalTerminals() && 
            "Error: Cantidad de terminales no coincide");
     std::cout << "✓ Cantidad de terminales coincide" << std::endl;
     
     // 4. Prueba de acceso a nodos específicos
     std::cout << "\n[Prueba de acceso a nodos]" << std::endl;
-    const auto& adjList = reader.getAdjacencyList();
-    const auto& terminals = reader.getTerminals();
+    const auto& adjList = reader.getGraph().getAdjacencyList();
+    const auto& terminals = reader.getGraph().getTerminals();
     
     // Probar con el primer terminal encontrado
     int primerTerminal = *terminals.begin();
@@ -55,7 +49,7 @@ void testGraphReader() {
         std::cout << "Vecinos del nodo " << nodoPrueba << ":" << std::endl;
         for (const auto& [vecino, peso] : adjList.at(nodoPrueba)) {
             std::cout << "  → " << vecino << " (peso: " << peso << ")";
-            if (reader.isTerminal(vecino)) {
+            if (reader.getGraph().isTerminal(vecino)) {
                 std::cout << " [TERMINAL]";
             }
             std::cout << std::endl;
@@ -67,7 +61,7 @@ void testGraphReader() {
     
     // 6. Prueba de visualización (opcional)
     std::cout << "\n[Resumen del grafo]" << std::endl;
-    reader.printGraphInfo();
+    reader.getGraph().printGraphInfo();
     
     std::cout << "\n=== ✔ Todas las pruebas pasaron exitosamente! ===" << std::endl;
 }

@@ -2,6 +2,7 @@
 #define READ
 
 #include <vector>
+#include "ListAdy.h"
 #include <string>
 #include <unordered_set>
 #include <unordered_map>
@@ -9,15 +10,9 @@
 class Read {
 private:
 
-    std::unordered_map<int, std::vector<std::pair<int, int>>> adjacencyList; // Lista de adyacencia
-    std::unordered_set<int> terminals;  // Nodos terminales
     std::string filename;               // Nombre del archivo
+    ListAdy graph;          // Lista de adyacencia
     
-    // Métodos
-    int totalNodes = 0;
-    int totalEdges = 0;
-    int totalTerminals = 0;
-
     void processGraphSection(std::ifstream& file);
     void processTerminalsSection(std::ifstream& file);
     
@@ -27,21 +22,8 @@ public:
     
     // Método principal para leer el archivo
     bool readFile();
-    
-    // Getters
-    const std::unordered_map<int, std::vector<std::pair<int, int>>>& getAdjacencyList() const;
-    const std::unordered_set<int>& getTerminals() const;
-    
-    // Método para imprimir información 
-    void printGraphInfo() const;
-    
-    // Método para verificar si un nodo es terminal
-    bool isTerminal(int node) const;
-
-    int getTotalNodes() const;
-    int getTotalEdges() const;
-    int getTotalTerminals() const;
-    
+    // Métodos para obtener información del grafo
+    const ListAdy& getGraph() const;
 };
 
 #endif

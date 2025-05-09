@@ -4,8 +4,16 @@
 #include <iostream>
 #include <algorithm>
 
+/**
+ * Constructor de la clase Read.
+ * @param filename Nombre del archivo a leer.
+ */
 Read::Read(const std::string& filename) : filename(filename) {}
 
+/**
+ * Lee el archivo y procesa las secciones de grafo y terminales.
+ * @return true si la lectura fue exitosa, false en caso contrario.
+ */
 bool Read::readFile() {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -40,6 +48,8 @@ bool Read::readFile() {
 void Read::processGraphSection(std::ifstream& file) {
     std::string line;
     int edgeRead = 0;
+    int totalNodes = 0;
+    int totalEdges = 0;
     while (getline(file, line)) {
         // Terminar si encontramos el fin de la sección
         if (line.find("END") != std::string::npos) {
@@ -67,16 +77,18 @@ void Read::processGraphSection(std::ifstream& file) {
             iss >> e >> node1 >> node2 >> cost;
             
             // Añadir a la lista de adyacencia (grafo no dirigido)
-            adjacencyList[node1].emplace_back(node2, cost);
-            adjacencyList[node2].emplace_back(node1, cost);
-            edgeRead++;
+            graph.addEdge(node1, node2, cost);
+            graph.addEdge(node2, node1, cost);
         }
     }
+    graph.setTotalNodes(totalNodes);
+    graph.setTotalEdges(totalEdges);
 }
 
 void Read::processTerminalsSection(std::ifstream& file) {
     std::string line;
     int terminalRead = 0;
+    int totalTerminals = 0;
     while (getline(file, line)) {
         // Terminar si encontramos el fin de la sección
         if (line.find("END") != std::string::npos) {
@@ -95,47 +107,13 @@ void Read::processTerminalsSection(std::ifstream& file) {
             char t;
             int terminal;
             iss >> t >> terminal;
-            terminals.insert(terminal);
+            graph.addTerminal(terminal);
             terminalRead++;
         }
     }
-}
+    graph.setTotalTerminals(totalTerminals);
 
-const std::unordered_map<int, std::vector<std::pair<int, int>>>& Read::getAdjacencyList() const {
-    return adjacencyList;
 }
-
-const std::unordered_set<int>& Read::getTerminals() const {
-    return terminals;
-}
-
-bool Read::isTerminal(int node) const {
-    return terminals.find(node) != terminals.end();
-}
-int Read::getTotalNodes() const {
-    return totalNodes;
-}
-int Read::getTotalEdges() const {
-    return totalEdges;
-}
-int Read::getTotalTerminals() const {
-    return totalTerminals;
-}
-
-void Read::printGraphInfo() const {
-    std::cout << "Lista de adyacencia del grafo:" << std::endl;
-    for (const auto& [node, neighbors] : adjacencyList) {
-        std::cout << "Nodo " << node << " -> ";
-        for (const auto& neighbor : neighbors) {
-            std::cout << "(" << neighbor.first << ", " << neighbor.second << ") ";
-        }
-        std::cout << std::endl;
-    }
-    
-    std::cout << "\nNodos terminales: ";
-    for (int terminal : terminals) {
-        std::cout << terminal << " ";
-    }
-    std::cout << "\n\nTotal nodos: " << adjacencyList.size() 
-              << ", Total terminales: " << terminals.size() << std::endl;
+const ListAdy& Read::getGraph() const {
+    return graph;
 }

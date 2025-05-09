@@ -1,0 +1,62 @@
+\doxysection{Read Class Reference}
+\hypertarget{classRead}{}\label{classRead}\index{Read@{Read}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRead_ac03a462eaf7a85681f31116a4f239813}{Read}} (const std\+::string \&filename)
+\item 
+bool \mbox{\hyperlink{classRead_a85e3cdcebbf1967fd53c2cb8ca3007f5}{read\+File}} ()
+\item 
+\Hypertarget{classRead_ad16d6e457b5a45d41fd2a246be127047}\label{classRead_ad16d6e457b5a45d41fd2a246be127047} 
+const std\+::unordered\+\_\+map$<$ int, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ $>$ \& {\bfseries get\+Adjacency\+List} () const
+\item 
+\Hypertarget{classRead_af8a7cfe5a4548c806f1470206f10749e}\label{classRead_af8a7cfe5a4548c806f1470206f10749e} 
+const std\+::unordered\+\_\+set$<$ int $>$ \& {\bfseries get\+Terminals} () const
+\item 
+\Hypertarget{classRead_a4643fca24f9328555f74d1735418c494}\label{classRead_a4643fca24f9328555f74d1735418c494} 
+void {\bfseries print\+Graph\+Info} () const
+\item 
+\Hypertarget{classRead_aac630d0dd1b17b24b6ee69f621942026}\label{classRead_aac630d0dd1b17b24b6ee69f621942026} 
+bool {\bfseries is\+Terminal} (int node) const
+\item 
+\Hypertarget{classRead_abd7fdb742fb3669342528675bdaca84c}\label{classRead_abd7fdb742fb3669342528675bdaca84c} 
+int {\bfseries get\+Total\+Nodes} () const
+\item 
+\Hypertarget{classRead_a2ac49c47de2e66b1a3992777c5087761}\label{classRead_a2ac49c47de2e66b1a3992777c5087761} 
+int {\bfseries get\+Total\+Edges} () const
+\item 
+\Hypertarget{classRead_aea6a5298198f19c5f7105eae5f9b9bbb}\label{classRead_aea6a5298198f19c5f7105eae5f9b9bbb} 
+int {\bfseries get\+Total\+Terminals} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classRead_ac03a462eaf7a85681f31116a4f239813}\label{classRead_ac03a462eaf7a85681f31116a4f239813} 
+\index{Read@{Read}!Read@{Read}}
+\index{Read@{Read}!Read@{Read}}
+\doxysubsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily Read\+::\+Read (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+Constructor de la clase \doxylink{classRead}{Read}. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nombre del archivo a leer. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRead_a85e3cdcebbf1967fd53c2cb8ca3007f5}\label{classRead_a85e3cdcebbf1967fd53c2cb8ca3007f5} 
+\index{Read@{Read}!readFile@{readFile}}
+\index{readFile@{readFile}!Read@{Read}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily bool Read\+::read\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Lee el archivo y procesa las secciones de grafo y terminales. \begin{DoxyReturn}{Returns}
+true si la lectura fue exitosa, false en caso contrario. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Read.\+h\item 
+Read.\+cpp\end{DoxyCompactItemize}
